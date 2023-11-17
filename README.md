@@ -33,3 +33,9 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Generate Rabin Private Key
+
+```bash
+$ npm run genPrivKey
+```
