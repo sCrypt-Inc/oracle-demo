@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { RabinService } from './rabin/rabin.service';
 import { ConfigModule } from '@nestjs/config';
-import { V1Controller } from './v1.controller';
 import { V1Service } from './v1.service';
+import { V1Controller } from './v1.controller';
 
 @Module({
   imports: [ConfigModule.forRoot({})],
-  controllers: [AppController, V1Controller],
-  providers: [RabinService, V1Service],
+  controllers: [V1Controller],
+  providers: [V1Service, RabinService],
 })
-export class AppModule {}
+export class V1Module {}

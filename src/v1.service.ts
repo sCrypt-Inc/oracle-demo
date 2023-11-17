@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 
 @Injectable()
-export class AppService {
+export class V1Service {
   /**
    * @param tradingPair e.g. `BSV-USDT`, `BTC-USDC`, etc
    * @param decimal decimal of the returned price
