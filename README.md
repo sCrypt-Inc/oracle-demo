@@ -1,5 +1,7 @@
 # oracle-demo
 
+Vercel deployment: https://oracle-demo.vercel.app/docs
+
 ## Installation
 
 ```bash
@@ -8,7 +10,12 @@ $ npm install
 
 ## Running the app
 
+Generate your own Rabin private key then copy the output of the below command to a `.env` file under the project root directory.
+
 ```bash
+# generate private key
+$ npm run genPrivKey
+
 # development
 $ npm run start
 
@@ -32,10 +39,4 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
-```
-
-## Generate Rabin Private Key
-
-```bash
-$ npm run genPrivKey
 ```
