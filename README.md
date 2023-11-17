@@ -19,6 +19,8 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+Swagger runs at http://localhost:3000/docs.
+
 ## Test
 
 ```bash

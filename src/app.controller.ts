@@ -2,6 +2,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 import { RabinService } from './rabin/rabin.service';
 import { getTimestamp, toBufferLE } from './utils';
+import { ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 
 @Controller()
 export class AppController {
@@ -11,11 +12,15 @@ export class AppController {
   ) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @ApiTags('info')
+  @ApiOperation({ summary: 'health check' })
+  healthCheck(): string {
+    return 'OK';
   }
 
   @Get('/info')
+  @ApiTags('info')
+  @ApiOperation({ summary: 'get server Rabin public key' })
   getInfo() {
     return {
       publicKey: toBufferLE(this.rabinService.publicKey).toString('hex'),
@@ -29,6 +34,8 @@ export class AppController {
   };
 
   @Get('/timestamp')
+  @ApiTags('api')
+  @ApiOperation({ summary: 'get timestamp' })
   getTimestamp() {
     const timestamp = getTimestamp();
     const data = Buffer.concat([
@@ -43,9 +50,23 @@ export class AppController {
     };
   }
 
-  @Get('price/:base/:coin')
-  async getPrice(@Param('base') base: string, @Param('coin') coin: string) {
-    const tradingPair = `${coin.toUpperCase()}-${base.toUpperCase()}`;
+  @Get('price/:base/:query')
+  @ApiTags('api')
+  @ApiOperation({ summary: 'get price of trading pair' })
+  @ApiParam({
+    name: 'base',
+    required: true,
+    type: String,
+    description: 'base coin of the trading pair, case insensitive, e.g. USDT',
+  })
+  @ApiParam({
+    name: 'query',
+    required: true,
+    type: String,
+    description: 'query coin of the trading pair, case insensitive, e.g. BSV',
+  })
+  async getPrice(@Param('base') base: string, @Param('query') query: string) {
+    const tradingPair = `${query.toUpperCase()}-${base.toUpperCase()}`;
     const decimal = 4;
     const price = await this.appService.getOkxPrice(tradingPair, decimal);
 
@@ -69,6 +90,14 @@ export class AppController {
   }
 
   @Get('chaininfo/:chain')
+  @ApiTags('api')
+  @ApiOperation({ summary: 'get blockchain info' })
+  @ApiParam({
+    name: 'chain',
+    required: true,
+    type: String,
+    description: 'chain name, case insensitive, e.g. BSV',
+  })
   async getChainInfo(@Param('chain') chain: string) {
     chain = chain.toUpperCase();
     const chainInfo = await this.appService.getChainInfo(chain);

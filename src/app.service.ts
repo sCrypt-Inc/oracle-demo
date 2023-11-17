@@ -3,10 +3,6 @@ import axios from 'axios';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
-  }
-
   /**
    * @param tradingPair e.g. `BSV-USDT`, `BTC-USDC`, etc
    * @param decimal decimal of the returned price
