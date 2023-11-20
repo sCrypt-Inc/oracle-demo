@@ -18,7 +18,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "genPrivKey": "npx ts-node src/genPrivKey.ts"
+    "genBsvPrivKey": "npx ts-node src/helpers/bsvPrivKey.ts",
+    "genRabinPrivKey": "npx ts-node src/helpers/rabinPrivKey.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -30,6 +31,8 @@
     "rabinsig": "^4.1.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
+    "scrypt-ts": "^1.3.18",
+    "scrypt-ts-lib": "^0.1.24",
     "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
