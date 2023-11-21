@@ -1,13 +1,8 @@
 # oracle-demo
 
-Swagger runs at http://localhost:3000/docs
+Vercel deployment of this Oracle service: https://oracle-demo.vercel.app/docs
 
-Demo of how the smart contract [PriceBet](./src/contracts/priceBet.ts) uses this Oracle
-
-- [Code example](./src/app.controller.ts#L44-L102)
-- Trigger contract deploy and call: http://localhost:3000/demo
-
-Vercel deployment: https://oracle-demo.vercel.app/docs
+A [code example](./test/priceBet.e2e-spec.ts#L42-L83) of how smart contract [PriceBet](./src/contracts/priceBet.ts) uses this Oracle.
 
 ## Installation
 
@@ -39,6 +34,8 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+**Step 3**. View Swagger docs at http://localhost:3000/docs
 
 ## Test
 

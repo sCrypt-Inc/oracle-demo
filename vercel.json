@@ -4,10 +4,6 @@
         {
             "src": "src/main.ts",
             "use": "@vercel/node"
-        },
-        {
-            "src": "artifacts/priceBet.json",
-            "use": "@vercel/static"
         }
     ],
     "routes": [

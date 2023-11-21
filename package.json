@@ -17,9 +17,9 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "genBsvPrivKey": "npx ts-node src/helpers/bsvPrivKey.ts",
-    "genRabinPrivKey": "npx ts-node src/helpers/rabinPrivKey.ts"
+    "test:e2e": "npx scrypt-cli@latest compile && jest --config ./test/jest-e2e.json",
+    "genBsvPrivKey": "npx ts-node test/utils/privateKey.ts",
+    "genRabinPrivKey": "npx ts-node test/utils/rabinPrivKey.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
