@@ -1,0 +1,15 @@
+dist: focal
+language: node_js
+
+cache:
+  npm: false
+
+jobs:
+  include:
+    - os: linux
+      node_js: 18
+
+script:
+  - echo "RABIN_PRIV_P=$RABIN_PRIV_P\nRABIN_PRIV_Q=$RABIN_PRIV_Q\nPRIVATE_KEY=$PRIVATE_KEY" > .env
+  - npm t
+  - npm run test:e2e
