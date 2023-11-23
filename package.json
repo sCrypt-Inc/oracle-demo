@@ -28,7 +28,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/swagger": "^7.1.16",
     "axios": "^1.6.2",
-    "rabinsig": "^4.1.0",
+    "rabinsig": "^4.2.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "scrypt-ts": "^1.3.18",

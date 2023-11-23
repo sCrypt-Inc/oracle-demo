@@ -1,10 +1,10 @@
 import { Global, Module } from '@nestjs/common';
-import { RabinService } from './rabin.service';
+import { SigService } from './sig.service';
 
 @Global()
 @Module({
   imports: [],
   controllers: [],
-  providers: [RabinService],
+  providers: [SigService],
 })
 export class RabinModule {}

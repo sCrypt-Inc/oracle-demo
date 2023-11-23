@@ -1,11 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
-import { RabinService } from './rabin/rabin.service';
+import { SigService } from './rabin/sig.service';
 import { toBufferLE } from './utils';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @Controller()
 export class AppController {
-  constructor(private readonly rabinService: RabinService) {}
+  constructor(private readonly rabinService: SigService) {}
 
   @Get()
   @ApiTags('info')

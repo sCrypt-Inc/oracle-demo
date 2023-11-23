@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Rabin, RabinPrivateKey, RabinPublicKey } from 'rabinsig';
-import { toBufferLE } from '../utils';
+import { Rabin, RabinPrivateKey, RabinPublicKey, serialize } from 'rabinsig';
 
 @Injectable()
-export class RabinService {
+export class SigService {
   private rabin = new Rabin();
 
   private privKey: RabinPrivateKey = {
@@ -22,10 +21,7 @@ export class RabinService {
     const sig = this.rabin.sign(dataHex, this.privKey);
     return {
       data: dataHex,
-      signature: {
-        s: toBufferLE(sig.signature).toString('hex'),
-        padding: '00'.repeat(sig.paddingByteCount),
-      },
+      signature: serialize(sig),
     };
   }
 }

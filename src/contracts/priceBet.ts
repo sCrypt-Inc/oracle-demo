@@ -1,3 +1,4 @@
+import { toRabinSig, deserialize } from 'rabinsig';
 import {
   SmartContract,
   prop,
@@ -120,9 +121,6 @@ export class PriceBet extends SmartContract {
   static parseSig(response: {
     signature: { s: ByteString; padding: ByteString };
   }): RabinSig {
-    return {
-      s: byteString2Int(response.signature.s + '00'),
-      padding: response.signature.padding,
-    };
+    return toRabinSig(deserialize(response.signature));
   }
 }

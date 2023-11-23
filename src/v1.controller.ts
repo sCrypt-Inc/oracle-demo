@@ -6,7 +6,7 @@ import {
   Param,
   Query,
 } from '@nestjs/common';
-import { RabinService } from './rabin/rabin.service';
+import { SigService } from './rabin/sig.service';
 import { getTimestamp, toBufferLE } from './utils';
 import { ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { V1Service } from './v1.service';
@@ -15,7 +15,7 @@ import { V1Service } from './v1.service';
 export class V1Controller {
   constructor(
     private readonly v1Service: V1Service,
-    private readonly rabinService: RabinService,
+    private readonly rabinService: SigService,
   ) {}
 
   private static readonly MARKER = {
